@@ -24,27 +24,29 @@ export class AppComponent implements OnInit {
   }
 
   getData() {
-    this.dataService.getWidgetOneData().subscribe((data) => {
-      this.schoolsCnt = data;
-      this.isWidgetOneSpinner = false;
-    });
-    this.dataService.getWidgetTwoData().subscribe((data) => {
-      this.hospitalsCnt = data;
-      this.isWidgetTwoSpinner = false;
-    });
-    this.dataService.getWidgetThreeData().subscribe((data) => {
-      this.banksCnt = data;
-      this.isWidgetThreeSpinner = false;
-    });
+    // this.dataService.getWidgetOneData().subscribe((data) => {
+    //   this.schoolsCnt = data;
+    //   this.isWidgetOneSpinner = false;
+    // });
+    // this.dataService.getWidgetTwoData().subscribe((data) => {
+    //   this.hospitalsCnt = data;
+    //   this.isWidgetTwoSpinner = false;
+    // });
+    // this.dataService.getWidgetThreeData().subscribe((data) => {
+    //   this.banksCnt = data;
+    //   this.isWidgetThreeSpinner = false;
+    // });
 
-    /*this.dataService.getAllData().subscribe(res => {
-      this.schoolsCnt = res[0];
-      this.hospitalsCnt = res[1];
-      this.banksCnt = res[2];
-      this.isWidgetOneSpinner = false;
-      this.isWidgetTwoSpinner = false;
-      this.isWidgetThreeSpinner = false;
-    });*/
+    //accessing all 3 observables in one subscriptin to the forkJoin returned by getAllData in dataService
+    this.dataService.getAllData().subscribe((returnedForkJoin)=>{
+      this.schoolsCnt = returnedForkJoin[0];
+      this.isWidgetOneSpinner=false; 
+      this.hospitalsCnt = returnedForkJoin[1];
+      this.isWidgetTwoSpinner=false;
+      this.banksCnt = returnedForkJoin[2];
+      this.isWidgetThreeSpinner=false;
+    })
+    
   }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, observable, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -34,30 +34,30 @@ export class DataService {
     });
   }
 
-  getAllData() {
-    let observableOne = new Observable<number>((observer) => {
-      setTimeout(() => {
+  getAllData(){
+    let observableSchools = new Observable<number>((observer)=>{
+      setTimeout(()=>{  
         observer.next(23);
         observer.complete();
-      }, 5000);
-    });
-
-    let observableTwo = new Observable<number>((observer) => {
-      setTimeout(() => {
+      },5000)
+    
+     });let observableHospitals = new Observable<number>((observer)=>{
+      setTimeout(()=>{  
         observer.next(15);
         observer.complete();
-      }, 1000);
-    });
-
-    let observableThree = new Observable<number>((observer) => {
-      setTimeout(() => {
+      },1000)
+    
+     });let observableBanks = new Observable<number>((observer)=>{
+      setTimeout(()=>{  
         observer.next(41);
         observer.complete();
-      }, 3000);
-    });
+      },3000)
+    
+     });
 
-    return forkJoin([observableOne, observableTwo, observableThree]);
-
+     //now return all these observble in a forkJoin
+     return forkJoin(observableBanks,observableHospitals,observableSchools);
   }
+ 
 
 }
