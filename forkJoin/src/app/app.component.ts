@@ -24,27 +24,27 @@ export class AppComponent implements OnInit {
   }
 
   getData() {
-    // this.dataService.getWidgetOneData().subscribe((data) => {
-    //   this.schoolsCnt = data;
-    //   this.isWidgetOneSpinner = false;
-    // });
-    // this.dataService.getWidgetTwoData().subscribe((data) => {
-    //   this.hospitalsCnt = data;
-    //   this.isWidgetTwoSpinner = false;
-    // });
-    // this.dataService.getWidgetThreeData().subscribe((data) => {
-    //   this.banksCnt = data;
-    //   this.isWidgetThreeSpinner = false;
-    // });
+    this.dataService.getWidgetOneData().subscribe((data) => {
+      this.schoolsCnt = data;
+      this.isWidgetOneSpinner = false;
+    });
+    this.dataService.getWidgetTwoData().subscribe((data) => {
+      this.hospitalsCnt = data;
+      this.isWidgetTwoSpinner = false;
+    });
+    this.dataService.getWidgetThreeData().subscribe((data) => {
+      this.banksCnt = data;
+      this.isWidgetThreeSpinner = false;
+    });
 
-    this.dataService.getAllData().subscribe(res => {
+    /*this.dataService.getAllData().subscribe(res => {
       this.schoolsCnt = res[0];
       this.hospitalsCnt = res[1];
       this.banksCnt = res[2];
       this.isWidgetOneSpinner = false;
       this.isWidgetTwoSpinner = false;
       this.isWidgetThreeSpinner = false;
-    });
+    });*/
   }
 
 }
